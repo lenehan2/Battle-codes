@@ -1,0 +1,24 @@
+{
+  "name": "FullstackGeneratedApp",
+  "description": "A generated project at Fullstack Academy",
+  "main": "server/start.js",
+  "authors": [
+    "John L <john.m.lenehan@gmail.com>"
+  ],
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "chai": "~2.1.2",
+    "mocha": "~2.2.1",
+    "angular-ui-ace": "bower",
+    "firebase": "~2.4.0"
+  }
+}

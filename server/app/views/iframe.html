@@ -1,0 +1,62 @@
+<html>
+
+<head>
+    <title>Mocha</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="/mocha/mocha.css">
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="/mocha/mocha.js"></script>
+    <script src="/chai/chai.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+    <!-- // <script type="require in jquery"></script> -->
+    <script id="userFunc" type="text/javascript"></script>
+    <script>
+    mocha.setup('bdd');
+    </script>
+    <script>
+    function assert(expr, msg) {
+        if (!expr) throw new Error(msg || 'failed');
+    }
+
+    var expect = chai.expect;
+    </script>
+    <script type="text/javascript">
+     {% autoescape false %}{{user}}{% endautoescape %}
+     var currentProblem = {% autoescape false %}{{currentProblem}}{% endautoescape %}
+
+    if(user){
+        var myFirebaseRef = new Firebase("https://battle-codes.firebaseio.com/Game1/"+user+"/");
+    }
+
+    
+    var a = parent.document.getElementById('userFunction').innerHTML;
+    var newScript = document.getElementById('userFunc');
+    newScript.text = a;
+
+    </script>
+    <script id="Tests" type="text/javascript">
+        {% autoescape false %}{{ Tests }}{% endautoescape %}
+    </script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        setTimeout(function(){
+
+            mocha.run(function(fails) {
+                console.log("FAILS: ",fails)
+                if(fails === 0){
+                    myFirebaseRef.update({
+                        "currentProblem": currentProblem+1
+                    })
+                }
+            }).on('suite end', function(stuff) {
+            })
+        },1000)
+    })
+    </script>
+</head>
+
+<body>
+    <div id="mocha"></div>
+</body>
+
+</html>

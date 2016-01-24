@@ -1,0 +1,7 @@
+{
+	"Add" : {
+
+	 "description": "Create a function that takes two numbers and returns their sum", "startingText": "function add(num1,num2){\n \n }", "tests": "describe('add', function() {\n it('returns the sum of two numbers', function() {\nconsole.log('TEST')\n var result = add(2, 3);\n expect(result).to.equal(5);\n});\n it('returns the sum of two numbers', function() {\n var result = add(3, 3);\n expect(result).to.equal(6);\n });\n});"
+	}
+}
+
