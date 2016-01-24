@@ -1,17 +1,39 @@
 <section id="home">
-	<p ng-hide="false" id="userFunction">{{text}}</p>
-	<p ng-hide="false" id="problem">{{currentProblem}}</p>
-	<p id="username" ng-hide="false">{{username}}</p>
-    <fullstack-logo></fullstack-logo>
-    <rando-greeting></rando-greeting>
+<div class='container2'>
+    
+    <p ng-hide="true" id="userFunction">{{text}}</p>
+    <p ng-hide="true" id="problem">{{currentProblem}}</p>
+    <p id="username" ng-hide="true">{{username}}</p>
     <div class="col-xs-6">
-    	<div id="ace" ui-ace="{ mode: 'javascript', onLoad: aceLoaded}"></div>	
+        <h2>Problem#: {{currentProblem+1}}</h2>
+        <div ng-hide="hide" id="ace" ui-ace="{ mode: 'javascript',theme: 'twilight', onLoad: aceLoaded}"></div>
+    <br>
+    <button ng-click="click()">Submit Answer</button>
     </div>
-    <p id="testP">HEY THERE</p>
-    <button ng-click="click()">Click MEeee</button>
+    <div class="col-xs-6 container2">
+        <div class="col-xs-6">
+            <h4>You: {{username}}</h4>
+            <h5>Score: {{currentProblem}}</h5>
 
-    <iframe id="Iframe" src="/api/test" frameborder="0"></iframe>
+        </div>
+        <div class="col-xs-6">
+            <h4>Opponent: {{opponent.name}}</h4>
+            <h5>Score: {{opponent.currentProblem}}</h5>
+        </div>
+        <div class="col-xs-12">
+            <h4>{{problem.title}}</h4>
+            <p>{{problem.description}}</p>
+        </div>
+        <div class="col-xs-12">
+            <button ng-click="hideOpponent()">Test1</button>
+            <button ng-click="textEditorMode()">Test2</button>
+            <button ng-click="messyText()">Test3</button>
 
+        </div>
+        <iframe ng-show="false" id="Iframe" ng-src='{{iframeSrc}}' frameborder="0"></iframe>
+    </div>
+    
+</div>
     
 </section>
 

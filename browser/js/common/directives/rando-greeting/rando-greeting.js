@@ -6,6 +6,7 @@ app.directive('randoGreeting', function (RandomGreetings) {
         link: function (scope) {
             scope.greeting = RandomGreetings.getRandomGreeting();
         }
+
     };
 
 });

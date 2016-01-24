@@ -47,6 +47,10 @@ gulp.task('buildJS', ['lintJS'], function () {
         .pipe(sourcemaps.init())
         .pipe(concat('main.js'))
         .pipe(babel())
+        .on('error', function(err){
+            console.log("ERROR: ", err);
+            this.emit('end')
+        })
         .pipe(sourcemaps.write())
         .pipe(gulp.dest('./public'));
 });
