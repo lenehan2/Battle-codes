@@ -1,39 +1,47 @@
 <section id="home">
-<div class='container2'>
-    
-    <p ng-hide="true" id="userFunction">{{text}}</p>
-    <p ng-hide="true" id="problem">{{currentProblem}}</p>
-    <p id="username" ng-hide="true">{{username}}</p>
-    <div class="col-xs-6">
-        <h2>Problem#: {{currentProblem+1}}</h2>
-        <div ng-hide="hide" id="ace" ui-ace="{ mode: 'javascript',theme: 'twilight', onLoad: aceLoaded}"></div>
-    <br>
-    <button ng-click="click()">Submit Answer</button>
-    </div>
-    <div class="col-xs-6 container2">
+    <div class='container2'>
+        <p ng-hide="true" id="userFunction">{{text}}</p>
+        <p ng-hide="true" id="problem">{{currentProblem}}</p>
+        <p id="username" ng-hide="true">{{username}}</p>
         <div class="col-xs-6">
-            <h4>You: {{username}}</h4>
-            <h5>Score: {{currentProblem}}</h5>
-
+            <h2>Problem#: {{currentProblem+1}}</h2>
+            <div ng-class="{hiddenTextArea: hide}" id="ace" ui-ace="{ mode: 'javascript',theme: 'twilight', onLoad: aceLoaded}"></div>
+            <br>
+            <button ng-click="click()">Submit Answer</button>
         </div>
-        <div class="col-xs-6">
-            <h4>Opponent: {{opponent.name}}</h4>
-            <h5>Score: {{opponent.currentProblem}}</h5>
+        <div class="col-xs-6 container2">
+            <div class="col-xs-6">
+                <h3>You: {{username}}</h3>
+                <h4>Score: {{currentProblem}}</h4>
+            </div>
+            <div class="col-xs-6">
+                <h3>Opponent: {{opponent.name}}</h3>
+                <h4>Score: {{opponent.currentProblem}}</h4>
+            </div>
+            <div class="col-xs-12 problemInfo">
+                <h3>{{problem.title}}</h4>
+                <p>{{problem.description}}</p>
+            </div>
+            <div class="col-xs-12">
+                <h3></h3>
+                <div ng-repeat="name in powerUps" class="col-xs-4 powerupdiv" ng-show="yourPowerUps.indexOf(name) !== -1">
+                <a ng-click = 'usePowerUp(name)'>
+                    <div class="col-xs-12">
+                        {{name}}
+                        <span class= '{{getIcon(name)}}'></span>
+                    </div>
+                    
+                </a>
+                </div>
+                
+            </div>
+            <div class="col-xs-12">
+                <alert type="danger" ng-show="error">
+                    {{ error }}
+                </alert>
+            </div>
+            <iframe ng-show="false" id="Iframe" ng-src='{{iframeSrc}}' frameborder="0"></iframe>
         </div>
-        <div class="col-xs-12">
-            <h4>{{problem.title}}</h4>
-            <p>{{problem.description}}</p>
-        </div>
-        <div class="col-xs-12">
-            <button ng-click="hideOpponent()">Test1</button>
-            <button ng-click="textEditorMode()">Test2</button>
-            <button ng-click="messyText()">Test3</button>
-
-        </div>
-        <iframe ng-show="false" id="Iframe" ng-src='{{iframeSrc}}' frameborder="0"></iframe>
     </div>
-    
-</div>
-    
+    <button ng-click="nextQuestion()">JUST FOR THE DEMO TOTALLY CHEATING</button>
 </section>
-
